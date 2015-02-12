@@ -1,13 +1,20 @@
 {
-    "name": "ishenkoyv/kcaptcha-lib",
+    "name": "intersvyaz/kcaptcha-lib",
     "description": "A php captcha library",
     "license": "MIT",
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.4.0",
+        "ext-gd": "*"
     },
     "autoload": {
-        "psr-0": {
-            "Ishenkoyv\\": "src/"
+        "psr-4": {
+            "Intersvyaz\\KCaptcha\\": ""
         }
-    }
+    },
+    "authors": [
+        {
+            "name" : "Bagaev Ivan",
+            "email" : "gmiramir@gmail.com"
+        }
+    ]
 }

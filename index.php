@@ -4,7 +4,7 @@ error_reporting (E_ALL);
 
 require 'vendor/autoload.php';
 
-use Ishenkoyv\KCaptcha\KCaptcha;
+use Intersvyaz\KCaptcha\KCaptcha;
 
 session_start();
 
@@ -17,5 +17,3 @@ $captcha = new KCaptcha($params);
 if($_REQUEST[session_name()]){
 	$_SESSION['captcha_keystring'] = $captcha->getKeyString();
 }
-
-?>
