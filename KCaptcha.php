@@ -307,7 +307,6 @@ class KCaptcha
     {
         if (function_exists("imagejpeg")) {
             header("Content-Type: image/jpeg");
-            imagejpeg($image, './test.jpg', $this->jpegQuality);
             imagejpeg($image, null, $this->jpegQuality);
         } elseif (function_exists("imagegif")) {
             header("Content-Type: image/gif");
