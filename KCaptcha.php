@@ -25,7 +25,7 @@ class KCaptcha
     /**
      * @var string folder with fonts
      */
-    protected $fontsdir = 'fonts';
+    protected $fontsdir = null;
     /**
      * @var array list name fonts to use on captcha (Default: all from $fontsdir)
      */
@@ -240,8 +240,8 @@ class KCaptcha
     private function setFonts()
     {
         if ($this->fonts === []) {
-            $fontsdir_absolute = __DIR__ . '/' . $this->fontsdir;
-            if ($handle = opendir($fontsdir_absolute)) {
+            $fontsdir = !is_null($this->fontsdir) ? $this->fontsdir : __DIR__ . '/fonts';
+            if ($handle = opendir($fontsdir)) {
                 while (false !== ($file = readdir($handle))) {
                     if (preg_match('/\.png$/i', $file)) {
                         $this->fonts[] = substr($file, 0, -4);
@@ -255,7 +255,11 @@ class KCaptcha
     private function getRandomFontImage()
     {
         $fontName = $this->fonts[mt_rand(0, count($this->fonts) - 1)];
-        $fontFile = $this->fontsdir . '/' . $fontName . '.png';
+
+        $fontFile = !is_null($this->fontsdir)
+            ? $this->fontsdir . '/' . $fontName . '.png'
+            : __DIR__ . '/fonts/' . $fontName . '.png';
+
         $fontImage = imagecreatefrompng($fontFile);
         imagealphablending($fontImage, true);
 
