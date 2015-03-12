@@ -224,7 +224,7 @@ class KCaptcha
             for ($i = 0; $i < $this->length; $i++) {
                 $keystring .= $this->allowedSymbols{mt_rand(0, strlen($this->allowedSymbols) - 1)};
             }
-        } while (!preg_match('/cp|cb|ck|c6|c9|rn|rm|mm|co|do|cl|db|qp|qb|dp|ww/', $keystring));
+        } while (preg_match('/cp|cb|ck|c6|c9|rn|rm|mm|co|do|cl|db|qp|qb|dp|ww/', $keystring));
 
         return $keystring;
     }
